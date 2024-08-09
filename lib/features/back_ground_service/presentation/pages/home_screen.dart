@@ -15,12 +15,13 @@ class _HomeScreenState extends State<HomeScreen> {
   String text = "Stop Service";
   @override
   void initState() {
-    context.read<CurrencyBloc>().add(SuccessGetCurrencyPriceEvent());
+    context.read<CurrencyCubit>().getCurrencyPrice();
+    FlutterBackgroundService().invoke("setAsBackground");
     super.initState();
   }
 
   @override
-  Widget build(BuildContext context) => BlocBuilder<CurrencyBloc, CurrencyState>(
+  Widget build(BuildContext context) => BlocBuilder<CurrencyCubit, CurrencyState>(
         builder: (BuildContext context, CurrencyState state) {
           return Scaffold(
               appBar: AppBar(

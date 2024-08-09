@@ -1,17 +1,20 @@
 part of 'currency_bloc.dart';
-enum CurrencyStatus { initial, loading, success, error }
-@immutable
-class CurrencyState  extends Equatable{
-  final CurrencyStatus status;
+
+
+
+class CurrencyState extends Equatable {
+  final FormzSubmissionStatus status;
   final List<CurrencyPrice> currencyPrice;
   final String message;
+
   const CurrencyState({
-    this.status = CurrencyStatus.initial,
+    this.status = FormzSubmissionStatus.initial,
     this.currencyPrice = const [],
     this.message = "",
   });
+
   CurrencyState copyWith({
-    CurrencyStatus? status,
+    FormzSubmissionStatus? status,
     List<CurrencyPrice>? currencyPrice,
     String? message,
   }) {
@@ -21,7 +24,7 @@ class CurrencyState  extends Equatable{
       message: message ?? this.message,
     );
   }
+
   @override
   List<Object?> get props => [status, currencyPrice, message];
 }
-

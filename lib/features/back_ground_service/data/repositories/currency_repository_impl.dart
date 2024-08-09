@@ -1,7 +1,7 @@
 import 'dart:developer';
 
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_backgroud_app_example/core/either/either.dart';
 import 'package:flutter_backgroud_app_example/core/failure/failure.dart';
 import 'package:flutter_backgroud_app_example/core/server_error/server_error.dart';
 import 'package:flutter_backgroud_app_example/features/back_ground_service/data/models/currency_price.dart';

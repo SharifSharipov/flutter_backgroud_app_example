@@ -8,10 +8,10 @@ import 'package:permission_handler/permission_handler.dart';
 
 import 'features/back_ground_service/presentation/manager/curreny_bloc/currency_bloc.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Permission.notification.isDenied.then((value){
-    if(value){
+  await Permission.notification.isDenied.then((value) {
+    if (value) {
       Permission.notification.request();
     }
   });
@@ -21,20 +21,26 @@ void main() async{
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return   MultiBlocProvider(
+    return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => CurrencyBloc(CurrencyRepositoryImpl(dio: Dio()))),
+        BlocProvider(
+          create: (context) => CurrencyCubit(
+              CurrencyRepositoryImpl(
+                dio: Dio(),
+              ),
+          ),
+        ),
       ],
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home:const HomeScreen()
-      ),
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          home: const HomeScreen()),
     );
   }
 }

@@ -14,6 +14,7 @@ class CurrencyPrice {
   final String nbuBuyPrice;
   final String nbuCellPrice;
   final String date;
+
   CurrencyPrice(
       {required this.title,
       required this.code,
@@ -21,6 +22,7 @@ class CurrencyPrice {
       required this.nbuBuyPrice,
       required this.nbuCellPrice,
       required this.date});
+
   CurrencyPrice copyWith(
           {String? title, String? code, String? cbPrice, String? nbuBuyPrice, String? nbuCellPrice, String? date}) =>
       CurrencyPrice(

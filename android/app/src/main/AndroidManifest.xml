@@ -1,10 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <!--
       Permission to use here depends on the value you picked for foregroundServiceType - see the Android documentation.
       Eg, if you picked 'location', use 'android.permission.FOREGROUND_SERVICE_LOCATION'
     -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_..." />
     <application
         android:label="flutter_backgroud_app_example"
         android:name="${applicationName}"
@@ -33,7 +35,7 @@
         </activity>
         <service
             android:name="id.flutter.flutter_background_service.BackgroundService"
-            android:foregroundServiceType="location"
+            android:foregroundServiceType="dataSync"
         />
         <meta-data
             android:name="flutterEmbedding"
