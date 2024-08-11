@@ -90,7 +90,7 @@ void onStart(ServiceInstance service) async {
 
     Timer.periodic(
       const Duration(seconds: 1),
-          (timer) async {
+      (timer) async {
         print("Background xizmati ishlamoqda");
         try {
           final response = await repository.getCurrencyPrice();
@@ -101,12 +101,22 @@ void onStart(ServiceInstance service) async {
               currencyPrice.last.code,
               currencyPrice.last.cbPrice,
               const NotificationDetails(
-                android: AndroidNotificationDetails(
-                  'my_foreground',
-                  'MY FOREGROUND SERVICE',
-                  icon: 'ic_bg_service_small',
-                  playSound: false,
-                  silent: true,
+                android: AndroidNotificationDetails('my_foreground', 'MY FOREGROUND SERVICE',
+                    icon: 'ic_bg_service_small',
+                    playSound: false,
+                    silent: true,
+                    ongoing: true,
+                    importance: Importance.low,
+                    priority: Priority.low,
+                    showWhen: false,
+                    styleInformation: BigTextStyleInformation(''),
+                    color: Colors.black,
+                    colorized: true,
+                    setAsGroupSummary: true),
+                iOS: DarwinNotificationDetails(
+                  presentAlert: true,
+                  presentBadge: true,
+                  presentSound: true,
                 ),
               ),
             );
