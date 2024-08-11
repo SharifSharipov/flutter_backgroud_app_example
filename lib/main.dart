@@ -11,7 +11,7 @@ import 'features/back_ground_service/presentation/manager/curreny_bloc/currency_
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 final Chuck chuck = Chuck(navigatorKey: navigatorKey);
-
+final Dio dio = Dio();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Permission.notification.isDenied.then((value) {
@@ -33,14 +33,23 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late final Dio _dio;
 
   @override
   void initState() {
-    _dio = Dio();
-    _dio.interceptors.addAll([
+    dio.interceptors.addAll([
       LogInterceptor(),
       chuck.getDioInterceptor(),
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          return handler.next(options);
+        },
+        onResponse: (response, handler) {
+          return handler.next(response);
+        },
+        onError: (DioError e, handler) {
+          return handler.next(e);
+        },
+      ),
     ]);
 
     super.initState();
@@ -53,7 +62,7 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(
           create: (context) => CurrencyCubit(
             CurrencyRepositoryImpl(
-              dio: _dio,
+              dio: dio,
             ),
           ),
         ),

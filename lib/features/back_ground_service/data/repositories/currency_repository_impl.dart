@@ -15,6 +15,7 @@ class CurrencyRepositoryImpl implements CurrencyRepository {
   Future<Either<Failure, List<CurrencyPrice>>> getCurrencyPrice() async {
     try {
       final Response<dynamic> response = await dio.get("https://nbu.uz/en/exchange-rates/json/");
+      print("har sekund  ${response.statusCode} ${response.data}");
       if (response.statusCode == 200) {
         return Right<Failure, List<CurrencyPrice>>(
             (response.data as List).map((e) => CurrencyPrice.fromJson(e)).toList()
