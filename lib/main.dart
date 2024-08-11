@@ -8,8 +8,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import 'features/back_ground_service/presentation/manager/curreny_bloc/currency_bloc.dart';
+
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-Chuck chuck = Chuck(showNotification: true, showInspectorOnShake: true,navigatorKey: navigatorKey);
+final Chuck chuck = Chuck(navigatorKey: navigatorKey);
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Permission.notification.isDenied.then((value) {
@@ -18,11 +20,31 @@ void main() async {
     }
   });
   await initializeService();
-  runApp( MyApp());
+  runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key, });
+class MyApp extends StatefulWidget {
+  const MyApp({
+    super.key,
+  });
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late final Dio _dio;
+
+  @override
+  void initState() {
+    _dio = Dio();
+    _dio.interceptors.addAll([
+      LogInterceptor(),
+      chuck.getDioInterceptor(),
+    ]);
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,19 +53,18 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => CurrencyCubit(
             CurrencyRepositoryImpl(
-              dio: Dio(),
+              dio: _dio,
             ),
           ),
         ),
       ],
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
+        navigatorKey: navigatorKey,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
         home: const HomeScreen(),
-        navigatorKey: chuck.getNavigatorKey(),
       ),
     );
   }
