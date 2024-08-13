@@ -11,7 +11,7 @@ dependencies:
   #cupertino_icons
   cupertino_icons: ^1.0.8
   #flutter_background_service
-  flutter_background_service: ^5.0.7
+  flutter_background_service: ^5.0.2
   #  flutter_background_service_ios: ^5.0.2
   #  flutter_background_service_android: ^6.2.4
   #flutter_local_notifications
@@ -34,6 +34,12 @@ dependencies:
   dartz: ^0.10.1
   #chuck_interceptor
   chuck_interceptor: ^2.1.7
+  #geolocator
+  geolocator: ^12.0.0
+  #yandex_mapkit
+  yandex_mapkit: ^4.1.0
+  #gap
+  gap: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -41,3 +47,5 @@ dev_dependencies:
   flutter_lints: ^4.0.0
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/

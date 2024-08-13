@@ -14,3 +14,6 @@ const String token = "";
 class StatusTextConstants {
   static String gotAllHoteldata = "got_all_hotel";
 }
+abstract class AppConstants {
+  static const apiKey="5485ce5e-5c39-47e0-8a3d-1890a256b751";
+}

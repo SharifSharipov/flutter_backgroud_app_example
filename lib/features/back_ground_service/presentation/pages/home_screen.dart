@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     context.read<CurrencyCubit>().getCurrencyPrice();
-    FlutterBackgroundService().invoke("setAsBackground");
+    FlutterBackgroundService().invoke("setAsForeground");
     super.initState();
   }
 
