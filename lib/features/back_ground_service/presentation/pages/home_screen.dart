@@ -22,31 +22,31 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) => BlocBuilder<CurrencyCubit, CurrencyState>(
-        builder: (BuildContext context, CurrencyState state) {
-          return Scaffold(
-              appBar: AppBar(
-                title: const Text("Flutter Background Service Example"),
-                backgroundColor: Colors.grey.shade300.withOpacity(0.5),
+    builder: (BuildContext context, CurrencyState state) {
+      return Scaffold(
+          appBar: AppBar(
+            title: const Text("Flutter Background Service Example"),
+            backgroundColor: Colors.grey.shade300.withOpacity(0.5),
+          ),
+          body: ListView.separated(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            scrollDirection: Axis.vertical,
+            itemBuilder: (BuildContext context, int index) => Card(
+              child: Column(
+                children: [
+                  Text(state.currencyPrice[index].code),
+                  Text(state.currencyPrice[index].nbuBuyPrice),
+                  Text(state.currencyPrice[index].cbPrice.toString()),
+                ],
               ),
-              body: ListView.separated(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                scrollDirection: Axis.vertical,
-                itemBuilder: (BuildContext context, int index) => Card(
-                  child: Column(
-                    children: [
-                      Text(state.currencyPrice[index].code),
-                      Text(state.currencyPrice[index].nbuBuyPrice),
-                      Text(state.currencyPrice[index].cbPrice.toString()),
-                    ],
-                  ),
-                ),
-                separatorBuilder: (BuildContext context, int index) => const SizedBox(
-                  width: 10,
-                ),
-                itemCount: state.currencyPrice.length,
-              ));
-        },
-      );
+            ),
+            separatorBuilder: (BuildContext context, int index) => const SizedBox(
+              width: 10,
+            ),
+            itemCount: state.currencyPrice.length,
+          ));
+    },
+  );
 }
 /* Center(
       child: Column(
