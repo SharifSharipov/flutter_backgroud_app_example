@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "265689341748",
+    "project_id": "flutter-background-f8e21",
+    "storage_bucket": "flutter-background-f8e21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:265689341748:android:46334bf22b094250ca0f61",
+        "android_client_info": {
+          "package_name": "com.example.flutter_backgroud_app_example"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwkb_bHm6b2dBVqHwtbOe3_3fvcvl9GPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:265689341748:android:cefb4040c59c9ddaca0f61",
+        "android_client_info": {
+          "package_name": "com.example.flutter_background_app_example"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwkb_bHm6b2dBVqHwtbOe3_3fvcvl9GPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
